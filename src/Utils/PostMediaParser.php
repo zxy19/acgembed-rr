@@ -51,7 +51,7 @@ class PostMediaParser
                 foreach ($result as $media) {
                     array_push($mediaList, [
                         "source" => $source,
-                        "url" => $media[2]
+                        "url" => html_entity_decode($media[2])
                     ]);
                 }
             }
