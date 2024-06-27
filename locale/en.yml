@@ -16,5 +16,5 @@ xypp-acgembed-rr:
       tip: Media info will be fetched after post was saved with option Fetch Media Info enabled
   forum:
     play: Click to Play
-    unknown-title: 来自[{0}]的未知媒体
+    unknown-title: Media from [{0}]
     unknown: No data loaded, click to Load or Click Link to Access.

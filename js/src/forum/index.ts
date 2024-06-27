@@ -40,13 +40,13 @@ app.initializers.add('xypp/acgembed-rr', function (app) {
                 if (!content || !_info || !$(_info)) return;
                 const infoObj: MediaInfo = mediaInfoRec[$(_info).html() + ":" + $(_info).attr("href")];
                 const info = {
-                    title: app.translator.trans("xypp-acgembed-rr.forum.unknown-title", [$(_info).html() as string] as any).join(""),
-                    desc: app.translator.trans("xypp-acgembed-rr.forum.unknown"),
+                    title: (app.translator.trans("xypp-acgembed-rr.forum.unknown-title", [$(_info).html() as string] as any) as string[]).join(""),
+                    desc: app.translator.trans("xypp-acgembed-rr.forum.unknown") as string,
                     poster: ""
                 }
                 if (infoObj) {
                     info.title = infoObj.title() as string;
-                    info.desc = infoObj.desc() as string;
+                    info.desc = (infoObj.desc() as string);
                     info.poster = infoObj.poster() as string;
                 }
                 const embedPlayer = $(content);
@@ -59,7 +59,9 @@ app.initializers.add('xypp/acgembed-rr', function (app) {
                 const coverElem = $("<div></div>");
                 coverElem.addClass("acgembed-rr-cover");
                 const bgHTML = info.poster && `<div class='acgembed-rr bg' style='background-image:url("${info.poster}")'></div>`
-                coverElem.html(`${bgHTML}<div class='acgembed-rr title'>${info.title}</div><div class='acgembed-rr desc'>${info.desc}</div><div>${app.translator.trans("xypp-acgembed-rr.forum.play")}</div>`)
+                coverElem.html(`${bgHTML}<div class='acgembed-rr title'></div><div class='acgembed-rr desc'></div><div class='start'>${app.translator.trans("xypp-acgembed-rr.forum.play")}</div>`)
+                coverElem.find(".title").text(info.title);
+                coverElem.find(".desc").text(info.desc);
                 coverElem.insertAfter(iframe);
                 coverElem.on("click", () => {
                     enableEmbedElem($(iframe), $(coverElem));

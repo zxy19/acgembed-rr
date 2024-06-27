@@ -16,5 +16,5 @@ xypp-acgembed-rr:
       tip: 媒体信息将在打开了获取媒体信息开关下保存后获取
   forum:
     play: 点击开始播放
-    unknown-title: 来自[{0}]的未知媒体
+    unknown-title: 来自[{0}]的媒体
     unknown: 信息未加载，点击加载播放器或点击下面的链接
