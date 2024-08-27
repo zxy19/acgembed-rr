@@ -25,6 +25,7 @@ app.initializers.add('xypp/acgembed-rr', function (app) {
 
     extend(CommentPost.prototype, ["oncreate","onupdate"], function () {
         const t_media_infos = (this.attrs.post as any).MediaInfo() as MediaInfo[];
+        if (!t_media_infos || !t_media_infos.length) return;
         const mediaInfoRec: Record<string, MediaInfo> = {};
         t_media_infos.forEach((media_info) => {
             mediaInfoRec[media_info.source() + ":" + media_info.url()] = media_info;
